@@ -48,19 +48,20 @@ export class MyKeyboard {
     let changeLang = 0;
 
     document.body.addEventListener('keydown', (event) => {
-
+      textarea.blur();
       ALL.forEach(btn => {
         if (event.code === btn.dataset.code) btn.classList.add('active');
         if (event.code === btn.dataset.code) {
           if (event.code === 'ShiftLeft') null;
-          else if (event.code === 'Tab') null;
-          else if (event.code === 'Backspace') null;
+          else if (event.code === 'Tab') textarea.value = textarea.value += '   ';
+          else if (event.code === 'Backspace') textarea.value = textarea.value.slice(0, -1);
           else if (event.code === 'CapsLock') null;
-          else if (event.code === 'Enter') null;
+          else if (event.code === 'Delete') textarea.value = '';
+          else if (event.code === 'Enter') textarea.value += '\n';
           else if (event.code === 'ControlLeft') null;
           else if (event.code === 'OSLeft') null;
           else if (event.code === 'AltLeft') null;
-          else if (event.code === 'Space') null;
+          else if (event.code === 'Space') textarea.value += ' ';
           else if (event.code === 'AltRight') null;
           else if (event.code === 'ControlRight') null;
           else textarea.value += btn.outerText;
@@ -154,6 +155,9 @@ export class MyKeyboard {
         }
         if (event.target.getAttribute('data-code') === 'Delete') {
           textarea.value = '';
+        }
+        if (event.target.getAttribute('data-code') === 'Tab') {
+          textarea.value += '    ';
         }
       }
     });
