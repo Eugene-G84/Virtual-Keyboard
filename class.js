@@ -48,9 +48,23 @@ export class MyKeyboard {
     let changeLang = 0;
 
     document.body.addEventListener('keydown', (event) => {
-      console.log(event.code);
+
       ALL.forEach(btn => {
         if (event.code === btn.dataset.code) btn.classList.add('active');
+        if (event.code === btn.dataset.code) {
+          if (event.code === 'ShiftLeft') null;
+          else if (event.code === 'Tab') null;
+          else if (event.code === 'Backspace') null;
+          else if (event.code === 'CapsLock') null;
+          else if (event.code === 'Enter') null;
+          else if (event.code === 'ControlLeft') null;
+          else if (event.code === 'OSLeft') null;
+          else if (event.code === 'AltLeft') null;
+          else if (event.code === 'Space') null;
+          else if (event.code === 'AltRight') null;
+          else if (event.code === 'ControlRight') null;
+          else textarea.value += btn.outerText;
+        }
       })
 
       if (event.ctrlKey && event.altKey) {
@@ -69,7 +83,16 @@ export class MyKeyboard {
 
       switch (event.key) {
         case 'Shift':
-          for (let i = 0; i < 65; i++) { ALL[i].textContent = LANGUAGES_KEYS.shift[i]; }
+          if (ALL[0].textContent === '`') {
+            for (let i = 0; i < 65; i++) {
+              ALL[i].textContent = LANGUAGES_KEYS.shift[i];
+            }
+          }
+          if (ALL[0].textContent === 'ё') {
+            for (let i = 0; i < 65; i++) {
+              ALL[i].textContent = LANGUAGES_KEYS.shiftRus[i];
+            }
+          }
           break;
         case 'CapsLock':
           caps++;
@@ -97,7 +120,12 @@ export class MyKeyboard {
 
       switch (event.key) {
         case 'Shift':
-          for (let i = 0; i < 65; i++) { ALL[i].textContent = LANGUAGES_KEYS.eng[i]; }
+          if (ALL[0].textContent === '~') {
+            for (let i = 0; i < 65; i++) { ALL[i].textContent = LANGUAGES_KEYS.eng[i]; }
+          }
+          if (ALL[0].textContent === 'Ё') {
+            for (let i = 0; i < 65; i++) { ALL[i].textContent = LANGUAGES_KEYS.rus[i]; }
+          }
           break;
         case 'Delete': textarea.value = ''; break;
       }
