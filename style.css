@@ -1,5 +1,6 @@
 body {
   margin: 15vh;
+  overflow: hidden;
 }
 
 .grid {
@@ -30,19 +31,8 @@ body {
   cursor: pointer;
 }
 
-.arrow {
-  width: 16px;
-  height: 16px;
-}
-
-.arrow--up {
-  transform: rotate(180deg);
-}
-
-.arrow--left {
-  transform: rotate(90deg);
-}
-
-.arrow--right {
-  transform: rotate(-90deg);
+.active,
+.caps-lock {
+  color: #fff;
+  background-color: brown;
 }
