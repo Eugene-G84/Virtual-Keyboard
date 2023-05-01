@@ -40,6 +40,10 @@ export class MyKeyboard {
       if (i === 13 || i === 29 || i === 41 || i === 42) this.buttons.classList.add('span');
       if (i === 59) this.buttons.classList.add('space');
 
+      if (localStorage.getItem('buttons') === 'ё' || localStorage.getItem('buttons') === 'Ё') {
+        keys = LANGUAGES_KEYS.rus
+      }
+
       this.buttons.textContent = keys[i];
       this.buttons.dataset.code = LANGUAGES_KEYS.code[i];
       this.grid.append(this.buttons);

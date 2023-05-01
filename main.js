@@ -7,4 +7,10 @@ document.onclick = function () {
   keybord.textarea.focus();
 }
 
+function setLocalStorage() {
+  let check = document.querySelector('button').textContent;
+  localStorage.setItem('buttons', check);
+}
+
+window.addEventListener('beforeunload', setLocalStorage);
 
