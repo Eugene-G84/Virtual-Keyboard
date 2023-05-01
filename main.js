@@ -5,7 +5,7 @@ keybord.init();
 
 document.onclick = function () {
   keybord.textarea.focus();
-}
+};
 
 function setLocalStorage() {
   let check = document.querySelector('button').textContent;
@@ -13,4 +13,3 @@ function setLocalStorage() {
 }
 
 window.addEventListener('beforeunload', setLocalStorage);
-
