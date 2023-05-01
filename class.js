@@ -2,23 +2,31 @@ import { LANGUAGES_KEYS } from './keys.js';
 
 export class MyKeyboard {
 
-  constructor(textarea, grid, buttons) {
+  constructor(textarea, grid, buttons, text1, text2) {
 
     this.textarea = textarea;
     this.grid = grid;
     this.buttons = buttons;
+    this.text1 = text1;
+    this.text2 = text2;
   }
 
   init() {
     this.textarea = document.createElement('textarea');
     this.grid = document.createElement('div');
+    this.text1 = document.createElement('p');
+    this.text2 = document.createElement('p');
     this.textarea.classList.add('textarea');
     this.textarea.spellcheck = 'true';
     this.textarea.cols = '30';
     this.textarea.rows = '5';
     this.grid.classList.add('grid');
+    this.text1.textContent = 'Клавиатура создана в операционной системе Windows';
+    this.text2.textContent = 'Для переключения языка комбинация: левыe ctrl + alt'
     document.body.append(this.textarea);
     document.body.append(this.grid);
+    document.body.append(this.text1);
+    document.body.append(this.text2);
     this.createKeys();
   }
 
