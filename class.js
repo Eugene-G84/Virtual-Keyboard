@@ -156,9 +156,16 @@ export class MyKeyboard {
         if (event.target.getAttribute('data-code') === 'Enter') {
           textarea.value += '\n';
         };
-        if (event.target.getAttribute('data-code') === 'Shift') {
-          for (let i = 0; i < 65; i++) {
-            ALL[i].textContent = LANGUAGES_KEYS.shift[i];
+        if (event.target.getAttribute('data-code') === 'ShiftLeft') {
+          if (ALL[0].textContent === '`') {
+            for (let i = 0; i < 65; i++) {
+              ALL[i].textContent = LANGUAGES_KEYS.shift[i];
+            }
+          }
+          if (ALL[0].textContent === 'ё') {
+            for (let i = 0; i < 65; i++) {
+              ALL[i].textContent = LANGUAGES_KEYS.shiftRus[i];
+            }
           }
         }
         if (event.target.getAttribute('data-code') === 'Delete') {
@@ -174,6 +181,19 @@ export class MyKeyboard {
       ALL.forEach(item => {
         item.classList.remove('active');
       });
+
+      if (event.target.getAttribute('data-code') === 'ShiftLeft') {
+        if (ALL[0].textContent === '~') {
+          for (let i = 0; i < 65; i++) {
+            ALL[i].textContent = LANGUAGES_KEYS.eng[i];
+          }
+        }
+        if (ALL[0].textContent === 'Ё') {
+          for (let i = 0; i < 65; i++) {
+            ALL[i].textContent = LANGUAGES_KEYS.rus[i];
+          }
+        }
+      }
     })
 
     grid.addEventListener('click', function (event) {
@@ -191,12 +211,6 @@ export class MyKeyboard {
           })
         }
       }
-      if (event.target.getAttribute('data-code') === 'Shift') {
-        for (let i = 0; i < 65; i++) {
-          ALL[i].textContent = LANGUAGES_KEYS.eng[i];
-        }
-      }
     })
-
   }
 }
