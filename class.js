@@ -60,7 +60,7 @@ export class MyKeyboard {
       ALL.forEach(btn => {
         if (event.code === btn.dataset.code) btn.classList.add('active');
         if (event.code === btn.dataset.code) {
-          if (event.code === 'ShiftLeft') null;
+          if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') null;
           else if (event.code === 'Tab') textarea.value = textarea.value += '   ';
           else if (event.code === 'Backspace') textarea.value = textarea.value.slice(0, -1);
           else if (event.code === 'CapsLock') null;
@@ -156,7 +156,7 @@ export class MyKeyboard {
         if (event.target.getAttribute('data-code') === 'Enter') {
           textarea.value += '\n';
         };
-        if (event.target.getAttribute('data-code') === 'ShiftLeft') {
+        if (event.target.getAttribute('data-code') === 'ShiftLeft' || (event.target.getAttribute('data-code') === 'ShiftRight')) {
           if (ALL[0].textContent === '`') {
             for (let i = 0; i < 65; i++) {
               ALL[i].textContent = LANGUAGES_KEYS.shift[i];
@@ -182,7 +182,7 @@ export class MyKeyboard {
         item.classList.remove('active');
       });
 
-      if (event.target.getAttribute('data-code') === 'ShiftLeft') {
+      if (event.target.getAttribute('data-code') === 'ShiftLeft' || (event.target.getAttribute('data-code') === 'ShiftRight')) {
         if (ALL[0].textContent === '~') {
           for (let i = 0; i < 65; i++) {
             ALL[i].textContent = LANGUAGES_KEYS.eng[i];
